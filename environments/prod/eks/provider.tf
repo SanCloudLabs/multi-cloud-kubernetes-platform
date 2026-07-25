@@ -4,7 +4,7 @@ provider "aws" {
   default_tags {
     tags = {
       Project     = "multi-cloud-kubernetes-platform"
-      Environment = "dev"
+      Environment = "prod"
       ManagedBy   = "Terraform"
     }
   }

@@ -19,31 +19,28 @@ variable "private_subnet_ids" {
 }
 
 variable "instance_types" {
-  description = "EC2 instance types"
+  description = "EC2 instance types for the EKS managed node group"
   type        = list(string)
 
   default = [
-    "t3.medium"
+    "t3.small"
   ]
 }
 
 variable "desired_size" {
-  description = "Desired node count"
+  description = "Desired number of worker nodes"
   type        = number
-
   default = 2
 }
 
 variable "min_size" {
-  description = "Minimum node count"
+  description = "Minimum number of worker nodes"
   type        = number
-
   default = 1
 }
 
 variable "max_size" {
-  description = "Maximum node count"
+  description = "Maximum number of worker nodes"
   type        = number
-
-  default = 3
+  default = 2
 }
