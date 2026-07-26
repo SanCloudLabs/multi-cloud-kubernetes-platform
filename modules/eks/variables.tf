@@ -44,3 +44,9 @@ variable "max_size" {
   type        = number
   default = 2
 }
+variable "tags" {
+  description = "Tags applied to all AWS resources"
+  type        = map(string)
+
+  default = {}
+}

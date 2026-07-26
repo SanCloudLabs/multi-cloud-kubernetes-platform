@@ -24,9 +24,5 @@ module "eks" {
     }
   }
 
-  tags = {
-    Project     = "multi-cloud-kubernetes-platform"
-    ManagedBy   = "Terraform"
-    Environment = "shared"
-  }
+ tags = var.tags
 }
