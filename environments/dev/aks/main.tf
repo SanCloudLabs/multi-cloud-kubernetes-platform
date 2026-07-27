@@ -10,9 +10,9 @@ module "aks" {
 
   subnet_id = var.subnet_id
 
-  vm_size = "Standard_B2s"
+  vm_size = var.vm_size
 
-  node_count = 2
+  node_count = var.node_count
 
   tags = local.common_tags
 

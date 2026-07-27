@@ -50,3 +50,37 @@ variable "tags" {
 
   default = {}
 }
+variable "disk_size" {
+  description = "Root EBS volume size (GB) for EKS worker nodes"
+  type        = number
+  default     = 50
+}
+
+
+
+variable "capacity_type" {
+  description = "Capacity type for worker nodes"
+  type        = string
+  default     = "ON_DEMAND"
+}
+
+variable "endpoint_public_access" {
+  description = "Enable public access to the Kubernetes API server"
+  type        = bool
+  default     = true
+}
+
+variable "endpoint_private_access" {
+  description = "Enable private access to the Kubernetes API server"
+  type        = bool
+  default     = true
+}
+
+variable "public_access_cidrs" {
+  description = "CIDR blocks allowed to access the EKS API endpoint"
+  type        = list(string)
+
+  default = [
+    "0.0.0.0/0"
+  ]
+}

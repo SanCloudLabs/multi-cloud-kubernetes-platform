@@ -27,3 +27,13 @@ variable "subnet_id" {
   description = "Existing subnet ID"
   type        = string
 }
+
+variable "vm_size" {
+  description = "AKS node VM size"
+  type        = string
+}
+
+variable "node_count" {
+  description = "Number of AKS nodes"
+  type        = string
+}

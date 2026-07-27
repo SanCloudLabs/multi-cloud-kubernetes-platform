@@ -15,6 +15,25 @@ cluster_name = "dev-eks"
 # Kubernetes version
 cluster_version = "1.30"
 
+
+instance_types = ["t3.small"]
+
+desired_size = 2
+min_size     = 1
+max_size     = 2
+
+disk_size = 50
+
+capacity_type = "ON_DEMAND"
+
+endpoint_public_access  = true
+endpoint_private_access = true
+
+public_access_cidrs = [
+  "0.0.0.0/0"
+]
+
+
 ###########################################################
 # Existing Network
 ###########################################################
