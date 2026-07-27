@@ -1,0 +1,26 @@
+###########################################################
+# Azure Subscription
+###########################################################
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+
+###########################################################
+# AKS
+###########################################################
+
+cluster_name = "prod-aks"
+
+cluster_version = "1.30"
+
+location = "Central India"
+
+vm_size = "Standard_D2s_v5"
+
+node_count = 3 
+###########################################################
+# Existing Infrastructure
+###########################################################
+
+resource_group_name = "rg-platform-dev"
+
+subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-network/providers/Microsoft.Network/virtualNetworks/vnet-platform/subnets/snet-aks"
