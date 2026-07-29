@@ -1,4 +1,4 @@
-name: Terraform Validation
+name: Terraform and Kubernetes Validation
 
 on:
   push:
@@ -47,3 +47,32 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+
+  kubernetes-validate:
+
+    name: Validate Kubernetes Manifests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install kubeconform
+        run: |
+          curl -L -o kubeconform.tar.gz https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz
+          tar -xzf kubeconform.tar.gz
+          sudo mv kubeconform /usr/local/bin/
+
+      - name: Validate Kubernetes Manifests
+        run: |
+          kubeconform \
+            -summary \
+            -strict \
+            kubernetes/namespace/namespace.yaml \
+            kubernetes/nginx/configmap.yaml \
+            kubernetes/nginx/deployment.yaml \
+            kubernetes/nginx/service.yaml \
+            kubernetes/ingress/ingress.yaml \
+            kubernetes/network-policy/network-policy.yaml \
+            kubernetes/hpa/hpa.yaml
