@@ -10,19 +10,27 @@ on:
       - main
 
 jobs:
+  terraform-validate:
 
-  terraform-dev-eks:
-
-    name: Validate Dev EKS
+    name: Validate ${{ matrix.environment }}
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+
+      matrix:
+        environment:
+          - environments/dev/eks
+          - environments/prod/eks
+          - environments/dev/aks
+          - environments/prod/aks
+
     defaults:
       run:
-        working-directory: environments/dev/eks
+        working-directory: ${{ matrix.environment }}
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
