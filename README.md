@@ -70,7 +70,7 @@ The repository provisions Kubernetes infrastructure on both AWS and Azure using 
 
 ## Architecture Diagram
 
-![Architecture](diagrams/architecture.png)
+![Architecture](diagrams/Architecture.png)
 
 ---
 
