@@ -2,54 +2,81 @@ apiVersion: v1
 kind: ConfigMap
 
 metadata:
-  name: nginx-config
+  name: demo-app-config
   namespace: demo-app
+
+  labels:
+    app.kubernetes.io/name: demo-app
+    app.kubernetes.io/instance: demo
+    app.kubernetes.io/component: config
+    app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
+    app.kubernetes.io/managed-by: kubectl
 
 data:
   index.html: |
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
       <meta charset="UTF-8">
-      <title>Multi Cloud Kubernetes Platform</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Multi-Cloud Kubernetes Platform</title>
+
       <style>
         body {
-          font-family: Arial, sans-serif;
-          margin: 40px;
-          background: #f4f4f4;
+          font-family: Arial, Helvetica, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 40px;
         }
 
         .container {
+          max-width: 900px;
+          margin: auto;
           background: white;
           padding: 30px;
           border-radius: 10px;
-          max-width: 900px;
-          margin: auto;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         h1 {
           color: #0052cc;
+          margin-bottom: 10px;
+        }
+
+        p {
+          color: #444;
+          line-height: 1.6;
         }
 
         table {
-          border-collapse: collapse;
           width: 100%;
-          margin-top: 20px;
+          border-collapse: collapse;
+          margin-top: 25px;
         }
 
-        td, th {
-          border: 1px solid #ddd;
-          padding: 10px;
+        th,
+        td {
+          border: 1px solid #dddddd;
+          padding: 12px;
+          text-align: left;
         }
 
         th {
-          background: #0052cc;
+          background-color: #0052cc;
           color: white;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f8f8f8;
         }
 
         footer {
           margin-top: 30px;
-          color: gray;
+          text-align: center;
+          color: #666;
+          font-size: 14px;
         }
       </style>
     </head>
@@ -58,17 +85,18 @@ data:
 
       <div class="container">
 
-        <h1>Multi Cloud Kubernetes Platform</h1>
+        <h1>Multi-Cloud Kubernetes Platform</h1>
 
         <p>
-          This sample application demonstrates a reusable Kubernetes platform
-          deployed on Amazon EKS and Microsoft AKS using Terraform.
+          This sample application demonstrates infrastructure provisioned with
+          reusable Terraform modules and deployed on Kubernetes using
+          Amazon EKS and Azure AKS.
         </p>
 
         <table>
 
           <tr>
-            <th>Technology</th>
+            <th>Component</th>
             <th>Status</th>
           </tr>
 
@@ -88,22 +116,39 @@ data:
           </tr>
 
           <tr>
+            <td>Kubernetes</td>
+            <td>✓</td>
+          </tr>
+
+          <tr>
             <td>GitHub Actions</td>
             <td>✓</td>
           </tr>
 
           <tr>
-            <td>Kubernetes</td>
+            <td>NGINX Ingress</td>
+            <td>✓</td>
+          </tr>
+
+          <tr>
+            <td>Horizontal Pod Autoscaler</td>
+            <td>✓</td>
+          </tr>
+
+          <tr>
+            <td>Network Policy</td>
             <td>✓</td>
           </tr>
 
         </table>
 
         <footer>
-          Created for learning and portfolio demonstration.
+          Multi-Cloud Kubernetes Platform |
+          Terraform • Amazon EKS • Azure AKS • GitHub Actions
         </footer>
 
       </div>
 
     </body>
+
     </html>

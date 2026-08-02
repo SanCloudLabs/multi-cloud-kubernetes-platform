@@ -7,26 +7,40 @@ metadata:
 
   labels:
     app.kubernetes.io/name: demo-app
+    app.kubernetes.io/instance: demo
     app.kubernetes.io/component: autoscaler
     app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
+    app.kubernetes.io/managed-by: kubectl
 
 spec:
 
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nginx
+    name: demo-app
 
   minReplicas: 2
-
   maxReplicas: 5
+
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
 
   metrics:
     - type: Resource
-
       resource:
         name: cpu
-
         target:
           type: Utilization
           averageUtilization: 70

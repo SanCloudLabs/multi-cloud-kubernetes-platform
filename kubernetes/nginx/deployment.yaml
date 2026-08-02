@@ -2,10 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: nginx
+  name: demo-app
   namespace: demo-app
   labels:
-    app: nginx
+    app: demo-app
+
+    app.kubernetes.io/name: demo-app
+    app.kubernetes.io/component: web
+    app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
+    app.kubernetes.io/managed-by: kubectl
 
 spec:
   replicas: 2
@@ -20,12 +25,16 @@ spec:
 
   selector:
     matchLabels:
-      app: nginx
+      app: demo-app
 
   template:
     metadata:
       labels:
-        app: nginx
+        app: demo-app
+
+        app.kubernetes.io/name: demo-app
+        app.kubernetes.io/component: web
+        app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
 
     spec:
       containers:
@@ -72,4 +81,4 @@ spec:
       volumes:
         - name: nginx-config
           configMap:
-            name: nginx-config
+            name: demo-app-config

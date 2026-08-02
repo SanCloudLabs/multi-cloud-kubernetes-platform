@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+
+metadata:
+  name: demo-app-network-policy
+  namespace: demo-app
+
+  labels:
+    app.kubernetes.io/name: demo-app
+    app.kubernetes.io/instance: demo
+    app.kubernetes.io/component: network-policy
+    app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
+    app.kubernetes.io/managed-by: kubectl
+
+spec:
+  podSelector:
+    matchLabels:
+      app: demo-app
+
+  policyTypes:
+    - Ingress
+
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: demo-app
+
+          podSelector: {}
