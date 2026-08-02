@@ -4,21 +4,22 @@ kind: Service
 metadata:
   name: demo-app-service
   namespace: demo-app
-  
+
   labels:
     app.kubernetes.io/name: demo-app
+    app.kubernetes.io/instance: demo
     app.kubernetes.io/component: service
     app.kubernetes.io/part-of: multi-cloud-kubernetes-platform
     app.kubernetes.io/managed-by: kubectl
 
 spec:
-
   selector:
     app: demo-app
 
   ports:
-
-  - port: 80
-    targetPort: 80
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
 
   type: ClusterIP
